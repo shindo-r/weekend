@@ -1,0 +1,45 @@
+<h1>Week End for U</h1>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Time</th>
+    <th>Adress</th>
+  </tr>
+
+<%  @events.sort_by{|e| e.started_at}.each do |event| %>
+  <tr>
+    <td>
+      <%= event.started_at.strftime("%m/%d") %>
+      <% if (not event.ended_at.blank?) &&
+            event.ended_at.strftime("%m%d") != event.started_at.strftime("%m%d") %>
+        〜 <%= event.ended_at.strftime("%m/%d") %>
+      <% end %>
+    </td>
+    <td><a href=<%= event.event_url %>><%= event.title %><a></td>
+    <td>
+      <%= event.started_at.strftime("%m/%d %H:%d") %>
+      <% unless event.ended_at.blank? %>
+        〜
+        <% if event.ended_at.strftime("%m%d") == event.started_at.strftime("%m%d") %> 
+        <%= event.ended_at.strftime("%H:%d") %>
+        <% else %>
+          <%= event.ended_at.strftime("%m/%d %H:%d") %>
+        <% end %>
+      <% end %>
+    </td>
+    <td><%= 
+      # 住所の短縮化
+      address = event.address.sub(/〒.{3}-.{4}/,'')
+      if  address =~ /区/ 
+        address.sub("東京都","").split('区')[0]+'区'
+      elsif address =~ /市/
+        address.split('市')[0]+'市'
+      else
+        address
+      end
+      %>
+      </td>
+  </tr>
+<% end %>
+</table>
