@@ -7,8 +7,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :address
       t.float :lon
       t.float :lat
-      t.date :started_at
-      t.date :ended_at
+      t.datetime :started_at
+      t.datetime :ended_at
 
       t.timestamps
     end

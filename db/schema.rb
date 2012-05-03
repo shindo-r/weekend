@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20120430074104) do
     t.string   "address"
     t.float    "lon"
     t.float    "lat"
-    t.date     "started_at"
-    t.date     "ended_at"
+    t.datetime "started_at"
+    t.datetime "ended_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
