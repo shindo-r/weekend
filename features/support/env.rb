@@ -57,3 +57,8 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Dir[Rails.root.join("feature/facotries/**/*.rb")].each {|f| require f}
+# TODO なんでfactory_girlのstep定義読み込まれへん？
+# require "factory_girl/step_definitions"
+World(FactoryGirl::Syntax::Methods)
+

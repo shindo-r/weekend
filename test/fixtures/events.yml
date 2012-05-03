@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  url: MyString
+  description: MyText
+  address: MyString
+  lon: 1.5
+  lat: 1.5
+  started_at: 2012-04-30 16:41:05
+  ended_at: 2012-04-30 16:41:05
+
+two:
+  title: MyString
+  url: MyString
+  description: MyText
+  address: MyString
+  lon: 1.5
+  lat: 1.5
+  started_at: 2012-04-30 16:41:05
+  ended_at: 2012-04-30 16:41:05

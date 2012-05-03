@@ -4,15 +4,19 @@ Feature: Show event
   I want to show events/index page
   
   Scenario: User can show event's data sorted by start date when events exist.
-    Given There are following events.
-      | name        | url                  | start_at      | end_at        | location |
-      | test_event1 | http://example.com/1 | [today]       | [tomorrow]    | Tokyo    |
-      | test_event2 | http://example.com/2 | [today+2days] | [today+3days] | Chiba    |
-    When I go to events/index.
-    Then I show the following table.
-      | Date                                   | Name                                    | Location |
-      | [today(MMDD)]-[tomorrow(MMDD)]         | [link(test_event1,http://example.com/1) | Tokyo    |
-      | [today+2day(MMDD)]-[today+3days(MMDD)] | [link(test_event2,http://example.com/1) | Chiba    |
+    Given the following event exists:
+      | title       | url                  | started_at   | ended_at     | address |
+      | test_event1 | http://example.com/1 | today        | tomorrow     | Tokyo   |
+      | test_event2 | http://example.com/2 | 2 days since | 3 days since | Chiba   |
+    When I go to the event index page
+    Then I should see following table:
+      | Date                                        | Title       | Address |
+      | [today(MM/DD)]-[tomorrow(MM/DD)]            | test_event1 | Tokyo    |
+      | [2 days since(MM/DD)]-[3 days since(MM/DD)] | test_event2 | Chiba    |
+    And I should see link following:
+      | name        | url                  |
+      | test_event1 | http://example.com/1 |
+      | test_event2 | http://example.com/2 |
     
   
   

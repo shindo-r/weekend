@@ -1,5 +1,4 @@
-class Event
-  attr_accessor :event_id, :title, :address, :updated_at, 
-                :started_at, :ended_at, :event_url,
-                :lat, :lon
+class Event < ActiveRecord::Base
+#  scope :between, -> {|from,to| where(:started_at=>(from-1.day)..to) }
+#  scope :between, -> {|from,to| where(:started_at=>(from-1.day)..to) }
 end

@@ -1,0 +1,14 @@
+%h1 Event#index
+%p Find me in app/views/event/index.html.erb
+
+%table 
+  %tr
+    %td Date
+    %td Title
+    %td Address
+  - @events.each do |event|
+    %tr
+      %td= event.started_at.try(:strftime,'%m/%d')+"-"+event.ended_at.try(:strftime,'%m/%d')
+      %td= link_to(event.title, event.url)
+      %td= event.address
+
