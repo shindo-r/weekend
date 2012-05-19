@@ -3,7 +3,7 @@ Then /^debugger$/ do
   debugger
 end
 
-Then /^show me the page$/ do
+Then /^(?:|show me the )page$/ do
   save_and_open_page
 end
 
