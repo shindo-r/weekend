@@ -1,7 +1,10 @@
-Feature: Show event
+Feature: Show events
   In order to show events
   As a user
   I want to show events/index page
+
+#todo データ再利用
+#todo 項目名のalias
   
   Scenario: User can show event's data sorted by start date when events exist.
     Given the following event exists:

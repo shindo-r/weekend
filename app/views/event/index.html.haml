@@ -8,7 +8,9 @@
     %td Address
   - @events.each do |event|
     %tr
-      %td= event.started_at.try(:strftime,'%m/%d')+"-"+event.ended_at.try(:strftime,'%m/%d')
+      %td
+        = event.started_at.strftime('%m/%d')
+        = "-"+event.ended_at.strftime('%m/%d') if event.ended_at
       %td= link_to(event.title, event.url)
       %td= event.address
 

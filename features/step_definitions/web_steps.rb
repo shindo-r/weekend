@@ -277,7 +277,7 @@ Then /^I should see the message "([^"]*)"$/ do |message|
 end
 
 Then /^I should see following table:$/ do |expected_table|
-  actual_table = find('table').all('tr').map { |row| row.all('th, td').map { |cell| cell.text.strip } }
+  actual_table = find('table').all('tr').map { |row| row.all('th, td').map { |cell| cell.text.strip.gsub(/\s/, '') } }
   expected_table.diff!(actual_table)
 end
 
