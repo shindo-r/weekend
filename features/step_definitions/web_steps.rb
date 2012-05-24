@@ -267,7 +267,11 @@ end
 Then /^following ([^ ]+) should exist:$/ do |model_name, table|
   model_class = model_name.capitalize.constantize
   table.hashes.each do |hash|
-    model_class.where(hash).should_not be_blank
+    model_class.where(hash).should_not be_blank, 
+      "Cannot find follosing expected #{model_name}. \n" +
+      "#{PP.pp(table.hashes,"")} \n" +
+      "There are only following #{model_name} in the #{model_name.capitalize} table.\n"+
+      "#{PP.pp(model_class.all.map(&:attributes),"")}"
   end
 end
 

@@ -17,6 +17,27 @@ class Event < ActiveRecord::Base
   
   #--------------------------------------------
   
+  def Event.gain_event
+    @events = []
+    url = 'http://api.atnd.org/events/'
+    result = open(url)
+    xml = REXML::Document.new result
+    event_elements = xml.root.elements["events"].select{|e| not e.to_s.blank?}
+    event_elements.each do |e|
+      event = Event.new
+      event.url = e.elements["event_url"].text
+      event.title = e.elements["title"].text
+      event.description = [e.elements["catch"].text,e.elements["description"].text].join(" ")
+      event.address = [e.elements["address"].text,e.elements["place"].text].join(" ")
+      event.started_at = e.elements["started_at"].text.try :to_time, :local
+      event.ended_at = e.elements["ended_at"].text.try :to_time, :local
+#      event.updated_at = e.elements["updated_at"].text.try :to_time
+      event.lat = e.elements["lat"].text.try :to_f
+      event.lon = e.elements["lon"].text.try :to_f
+      event.save!
+    end
+  end
+  
   # 距離限界
   # 　緯度経度から計算された距離が以下の数値を超えたら表示しない
   DISTANCE_LIMIT = 0.35
