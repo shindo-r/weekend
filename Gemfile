@@ -35,6 +35,7 @@ group :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'spork'
+  gem 'fakeweb'
 
   gem "simplecov", :require => false
   gem 'launchy' # So you can do Then show me the page
