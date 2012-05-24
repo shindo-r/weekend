@@ -274,6 +274,9 @@ Then /^following ([^ ]+) should exist:$/ do |model_name, table|
       "#{PP.pp(model_class.all.map(&:attributes),"")}"
   end
 end
+Then /^following ([^ ]+) should be gained:$/ do |model_name, table|
+  step %{following #{model_name} should exist:}, table
+end
 
 
 Then /^I should see the message "([^"]*)"$/ do |message|

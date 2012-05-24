@@ -40,7 +40,7 @@ Feature: Gain events
       </hash>
       """
     When "gain_event" task runs
-    Then following event should exist:
+    Then following event should be gained:
       | title  | url                  | description        | address         | lon  | lat  | started_at         | ended_at           |
       | title1 | http://example.com/1 | catch1 descriptio1 | address1 place1 | 20.1 | 10.1 | today(time)        | tomorrow(time)     |
       | title2 | http://example.com/2 | catch2 descriptio2 | address2 place2 | 20.2 | 10.2 | 2 days since(time) | 3 days since(time) |
