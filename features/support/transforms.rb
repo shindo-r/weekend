@@ -10,7 +10,7 @@ Transform /\[.*\]/ do |str|
 end
 
 #date
-Transform /^(?:tomorrow|today)$/ do |str|
+Transform /^(?:tomorrow|today|yesterday)$/ do |str|
   Date.send(str)
 end
 Transform /^(-?\d+) days ((?:ago|since))$/ do |num, ago_or_since|
