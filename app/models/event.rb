@@ -11,6 +11,8 @@ require "rexml/document"
 #   http://www.germane-software.com/software/rexml/docs/tutorial.html
 
 class Event < ActiveRecord::Base
+
+  scope :not_finish, where("ended_at >= ?", Time.zone.now)
 #  scope :between, -> {|from,to| where(:started_at=>(from-1.day)..to) }
 #  scope :between, -> {|from,to| where(:started_at=>(from-1.day)..to) }
   

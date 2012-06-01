@@ -13,9 +13,15 @@ end
 Transform /^(?:tomorrow|today|yesterday)$/ do |str|
   Date.send(str)
 end
-Transform /^(-?\d+) days ((?:ago|since))$/ do |num, ago_or_since|
-  num.to_i.days.send(ago_or_since)
+
+#usage example
+# 1 days ago 
+# 2 days since from now
+# 3 hours ago from now
+Transform /^(-?\d+) ((?:days|hours)) ((?:ago|since))(?:| from now)$/ do |num, unit, ago_or_since|
+  num.to_i.send(unit).send(ago_or_since)
 end
+
 #time
 #date format
 Transform /^(.*)\((.*)\)$/ do |value, format|

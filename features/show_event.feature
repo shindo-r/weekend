@@ -29,10 +29,11 @@ Feature: Show events
     Then I should <not see/see> "target_event"
     
     Examples:
-       | datetime        | not see/see |
-       | yesterday(time) | not see     |
-       | today(time)     | see         |
-       | tomorrow(time)  | see         |
+       | datetime            | not see/see |
+       | yesterday(time)     | not see     |
+       | 1 hours ago(time)   | not see     |
+       | 1 hours since(time) | see         |
+       | tomorrow(time)      | see         |
 
   
   
