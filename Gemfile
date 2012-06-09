@@ -11,7 +11,8 @@ group :development, :test do
 end
 
 gem 'haml'
-
+gem 'execjs'
+gem 'therubyracer'
 gem 'heroku', :group => [:development]
 
 group :assets do
